@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import db, { client } from './Drizzle/db';
+import { authRoute } from './routes/authRoute';
 
 
 dotenv.config();
@@ -22,6 +23,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 const  port = process.env.PORT
+
+authRoute(app);
 
 
 app.listen(port, () => {

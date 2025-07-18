@@ -45,7 +45,7 @@ export const UserApi = createApi({
 
     verifyUser: builder.mutation<TVerify, { email: string; code: string }>({
       query: ({ email, code }) => ({
-        url: "/auth/verify-email",
+        url: "/auth/verify",
         method: "POST",
         body: { email, code },
       }),

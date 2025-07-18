@@ -7,17 +7,28 @@ import { categoryRoute } from './routes/categoryRoute';
 import { orderRoute } from './routes/orderRoute';
 import { paymentRoute } from './routes/paymentRoute';
 import { orderItemRoute } from './routes/orderItemRoute';
+import cors from 'cors';
 
 
 dotenv.config();
 
 export const app = express();
 
+app.use(cors({
+  origin:"http://localhost:5173",
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}))
+
+
 
 
 // middleware
 app.use(express.json());
 // cors for all origins
+
+
 
 
 

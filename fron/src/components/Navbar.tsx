@@ -11,6 +11,7 @@ const Navbar = () => {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const dispatch = useDispatch();
   const { user, token } = useSelector((state: RootState) => state.user);
+  const { totalItems } = useSelector((state: RootState) => state.cart);
   const isAuthenticated = !!(token && user);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -85,6 +86,23 @@ const Navbar = () => {
             className={({ isActive }) => `${isActive ? activeStyle : inactiveStyle} font-medium`}
           >
             Admin Dashboard
+          </NavLink>
+        </div>
+
+        {/* Cart Icon - Before Auth Section */}
+        <div className="absolute right-32 hidden md:block">
+          <NavLink
+            to="/cart"
+            className="relative flex items-center justify-center w-10 h-10 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-colors duration-300"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9" />
+            </svg>
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
           </NavLink>
         </div>
 

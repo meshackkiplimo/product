@@ -3,6 +3,10 @@ import express from 'express';
 import db, { client } from './Drizzle/db';
 import { authRoute } from './routes/authRoute';
 import { productRoute } from './routes/productRoute';
+import { categoryRoute } from './routes/categoryRoute';
+import { orderRoute } from './routes/orderRoute';
+import { paymentRoute } from './routes/paymentRoute';
+import { orderItemRoute } from './routes/orderItemRoute';
 
 
 dotenv.config();
@@ -27,6 +31,10 @@ const  port = process.env.PORT
 
 authRoute(app);
 productRoute(app);
+categoryRoute(app);
+orderRoute(app);
+paymentRoute(app);
+orderItemRoute(app);
 
 
 app.listen(port, () => {

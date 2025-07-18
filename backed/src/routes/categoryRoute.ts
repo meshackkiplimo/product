@@ -1,49 +1,47 @@
-
-import { createProductController, getAllProductsController, getProductByIdController, updateProductController, deleteProductController } from '@/controllers/productController';
+import { createCategoryController, getAllCategoriesController, getCategoryByIdController, updateCategoryController, deleteCategoryController } from '@/controllers/categoryController';
 import { Express } from 'express';
 
-
-export const productRoute = (app: Express) => {
-    app.route('/products').post(
+export const categoryRoute = (app: Express) => {
+    app.route('/categories').post(
         async (req, res, next) => {
             try {
-                await createProductController(req, res);
+                await createCategoryController(req, res);
             } catch (error) {
                 next(error);
             }
         }
     );
-    app.route('/products').get(
+    app.route('/categories').get(
         async (req, res, next) => {
             try {
-                await getAllProductsController(req, res);
+                await getAllCategoriesController(req, res);
             } catch (error) {
                 next(error);
             }
         }
     );
-    app.route('/products/:id').get(
+    app.route('/categories/:id').get(
         async (req, res, next) => {
             try {
-                await getProductByIdController(req, res);
+                await getCategoryByIdController(req, res);
             } catch (error) {
                 next(error);
             }
         }
     );
-    app.route('/products/:id').put(
+    app.route('/categories/:id').put(
         async (req, res, next) => {
             try {
-                await updateProductController(req, res);
+                await updateCategoryController(req, res);
             } catch (error) {
                 next(error);
             }
         }
     );
-    app.route('/products/:id').delete(
+    app.route('/categories/:id').delete(
         async (req, res, next) => {
             try {
-                await deleteProductController(req, res);
+                await deleteCategoryController(req, res);
             } catch (error) {
                 next(error);
             }

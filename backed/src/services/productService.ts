@@ -1,5 +1,6 @@
 import db from "@/Drizzle/db";
 import { ProductTable, TIProduct } from "@/Drizzle/schema";
+import { eq } from "drizzle-orm";
 
 
 
@@ -42,5 +43,18 @@ export const getProductByIdService = async (productId:number) => {
     return product;
 }
 
+export const updateProductService = async (productId: number, product: Partial<TIProduct>) => {
+    const updatedProduct = await db.update(ProductTable)
+        .set(product)
+        .where(eq(ProductTable.product_id, productId))
+        .returning();
+    return updatedProduct[0];
+}
 
+export const deleteProductService = async (productId: number) => {
+    const deletedProduct = await db.delete(ProductTable)
+        .where(eq(ProductTable.product_id, productId))
+        .returning();
+    return deletedProduct[0];
+}
 

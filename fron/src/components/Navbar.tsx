@@ -58,7 +58,7 @@ const Navbar = () => {
               </svg>
             </div>
             <span className="text-3xl font-bold text-white group-hover:text-amber-100 transition-colors duration-300">
-              TripNest
+              prolist
             </span>
           </NavLink>
         </div>
@@ -72,30 +72,14 @@ const Navbar = () => {
           >
             Home
           </NavLink>
+         
           <NavLink
-            to="/rooms"
+            to="/products"
             className={({ isActive }) => `${isActive ? activeStyle : inactiveStyle} font-medium`}
           >
-            Rooms
+            Products
           </NavLink>
-          <NavLink
-            to="/hotels"
-            className={({ isActive }) => `${isActive ? activeStyle : inactiveStyle} font-medium`}
-          >
-            Hotels
-          </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) => `${isActive ? activeStyle : inactiveStyle} font-medium`}
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) => `${isActive ? activeStyle : inactiveStyle} font-medium`}
-          >
-            Contact
-          </NavLink>
+          
            <NavLink
             to="/admin-dashboard"
             className={({ isActive }) => `${isActive ? activeStyle : inactiveStyle} font-medium`}

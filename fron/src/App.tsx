@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Provider store={store}>
+      <Router>
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/products" element={<div className="pt-20 p-8"><h1 className="text-3xl font-bold">Products Page - Coming Soon</h1></div>} />
+            <Route path="/categories" element={<div className="pt-20 p-8"><h1 className="text-3xl font-bold">Categories Page - Coming Soon</h1></div>} />
+            <Route path="/cart" element={<div className="pt-20 p-8"><h1 className="text-3xl font-bold">Shopping Cart - Coming Soon</h1></div>} />
+            <Route path="/orders" element={<div className="pt-20 p-8"><h1 className="text-3xl font-bold">My Orders - Coming Soon</h1></div>} />
+            <Route path="/register" element={<div className="pt-20 p-8"><h1 className="text-3xl font-bold">Register Page - Coming Soon</h1></div>} />
+            <Route path="/admin-dashboard" element={<div className="pt-20 p-8"><h1 className="text-3xl font-bold">Admin Dashboard - Coming Soon</h1></div>} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
+  );
 }
 
-export default App
+export default App;
